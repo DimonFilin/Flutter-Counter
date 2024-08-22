@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/themes.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'generated/l10n.dart';
+import 'package:bloc/bloc.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_app/counter/app.dart';
+import 'package:flutter_app/counter_observer.dart';
 
-void main() =>  runApp(MyApp());
+void main() {
+  Bloc.observer = const CounterObserver();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -41,35 +47,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-          AdaptiveTheme.of(context).toggleThemeMode();
-          },
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //   AdaptiveTheme.of(context).toggleThemeMode();
+        //   },
+        // ),
 
       appBar: AppBar(
           title: Text(S.of(context).appBarTitle)
       ),
-      body: Center(
-    child: Column(
-    mainAxisAlignment: MainAxisAlignment.center, // Выравнивание по центру по вертикали
-
-        children: [
-          Text(
-            S.of(context).MainTitle,
-            style: Theme.of(context).textTheme.bodyLarge,
-            textAlign: TextAlign.center, // Выравнивание текста по центру по горизонтали
-          ),
-          Text(
-            S.of(context).MainTitle,
-            style: Theme.of(context).textTheme.bodyMedium,
-            textAlign: TextAlign.center, // Выравнивание текста по центру по горизонтали
-          ),
-        ],)
-    )
+      body: const CounterApp()
     );
   }
 }

@@ -2,25 +2,31 @@ import 'package:flutter/material.dart';
 
 
 final kLightTheme = ThemeData.light().copyWith(
-    primaryColor: Colors.black,
-    appBarTheme: AppBarTheme(
-        color: Colors.blue
-    ),
-  textTheme: TextTheme(
-    bodyLarge: TextStyle(color: Colors.blue), // Устанавливаем цвет текста для bodyText1
-    bodyMedium: TextStyle(color: Colors.lightBlue, ), // Устанавливаем цвет текста для bodyText2
-  // Добавьте другие стили текста по необходимости
-),
-
-);
-final kDarkTheme = ThemeData.dark().copyWith(
-  primaryColor: Colors.white,
-    appBarTheme: AppBarTheme(
-    color: Colors.brown
+  primaryColor: Colors.blue, // Используйте цвет, который хорошо виден на светлом фоне
+  appBarTheme: AppBarTheme(
+    backgroundColor: Colors.red,
+    foregroundColor: Colors.blue
   ),
-    textTheme: TextTheme(
-      bodyLarge: TextStyle(color: Colors.brown), // Устанавливаем цвет текста для bodyText1
-      bodyMedium: TextStyle(color: Colors.grey), // Устанавливаем цвет текста для bodyText2
-)
+  canvasColor: Colors.black,
+  textTheme: TextTheme(
+    bodyLarge: TextStyle(color: Colors.lightBlue, fontSize: 18, fontWeight: FontWeight.bold), // Устанавливаем цвет текста для bodyText1
+    bodyMedium: TextStyle(color: Colors.lightBlue), // Устанавливаем цвет текста для bodyText2
+  ),
 );
 
+final kDarkTheme = ThemeData.dark().copyWith(
+  primaryColor: Colors.amber,
+  appBarTheme: AppBarTheme(
+    backgroundColor: Colors.amber,
+      foregroundColor: Colors.black
+
+  ),
+  canvasColor: Colors.black,
+  textTheme: TextTheme(
+    bodyLarge: TextStyle(color: Colors.amberAccent, fontSize: 18, fontWeight: FontWeight.bold), // Устанавливаем цвет текста для bodyText1
+    bodyMedium: TextStyle(color: Colors.amberAccent), // Устанавливаем цвет текста для bodyText2
+  ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(unselectedItemColor: Colors.grey, selectedItemColor: Colors.amber),
+    elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle(backgroundColor:MaterialStatePropertyAll<Color>( Colors.red),foregroundColor: MaterialStatePropertyAll<Color>(Colors.blue) )),
+
+);
